@@ -1,8 +1,6 @@
 <template>
     <button class="t-button" :class="{[`icon-${position}`]:true}">
-        <svg class="icon" aria-hidden="true">
-            <use :xlink:href=`#i-${icon}`></use>
-        </svg>
+        <t-icon class="icon" :icon="icon"></t-icon>
         <div class="content">
             <slot></slot>
         </div>
@@ -11,7 +9,16 @@
 
 <script>
     export default {
-        props:['icon',"position"]
+        props:{
+            icon:{},
+            position:{
+                type: String,
+                default: "left",
+                validator(value){
+                    return value === "left" || value === "right";
+                }
+            }
+        }
     }
 </script>
 
@@ -56,8 +63,6 @@
             }
 
             >.icon{
-                width: 1em;
-                height: 1em;
                 margin-right: 0;
                 margin-left: 0.4em;
                 order: 2;
