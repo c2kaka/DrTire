@@ -33,6 +33,12 @@
         <t-button :loading="loading6" @click="loading6 = !loading6" icon="down">按钮</t-button>
         <t-button :loading="loading7" @click="loading7 = !loading7" icon="left">按钮</t-button>
         <t-button :loading="loading8" @click="loading8 = !loading8" icon="right">按钮</t-button>
+
+        <t-button-group>
+            <t-button icon="left">上一页</t-button>
+            <t-button>更多</t-button>
+            <t-button icon="right" position="right">下一页</t-button>
+        </t-button-group>
     </div>
     <script src="./src/app.js"></script>
     <script src="//at.alicdn.com/t/font_1285665_idhvhhsp6td.js"></script>
