@@ -1,15 +1,26 @@
 <template>
-    <button class="t-button">按钮</button>
+    <button class="t-button" :class="{[`icon-${position}`]:true}">
+        <svg class="icon" aria-hidden="true">
+            <use :xlink:href=`#i-${icon}`></use>
+        </svg>
+        <div class="content">
+            <slot></slot>
+        </div>
+    </button>
 </template>
 
 <script>
     export default {
-        name: "t-button"
+        props:['icon',"position"]
     }
 </script>
 
 <style lang="scss">
     .t-button{
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        vertical-align: bottom;
         font-size: var(--font-size);
         height: var(--button-height);
         background: var(--button-bg);
@@ -26,6 +37,31 @@
 
         &:focus{
             outline: none;
+        }
+
+        >.content{
+            order: 2;
+        }
+
+        >.icon{
+            width: 1em;
+            height: 1em;
+            margin-right: .4em;
+            order: 1;
+        }
+
+        &.icon-right{
+            >.content{
+                order: 1;
+            }
+
+            >.icon{
+                width: 1em;
+                height: 1em;
+                margin-right: 0;
+                margin-left: 0.4em;
+                order: 2;
+            }
         }
     }
 </style>
