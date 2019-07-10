@@ -7,9 +7,12 @@
         </div>
     </button>
 </template>
-
 <script>
+    import Icon from "./icon"
     export default {
+        components:{
+          "t-icon": Icon
+        },
         props:{
             icon:{},
             loading:{
