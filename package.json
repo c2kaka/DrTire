@@ -1,6 +1,6 @@
 {
   "name": "drtire-test-2019",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "ui based on vuejs",
   "main": "dist/index.js",
   "scripts": {
