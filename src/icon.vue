@@ -7,11 +7,12 @@
 <script>
     import "./svg"
     export default {
+        name: "tireIcon",
         props:["icon"]
     }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     .t-icon{
         width: 1em;
         height: 1em;

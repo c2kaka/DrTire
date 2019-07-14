@@ -6,6 +6,7 @@
 
 <script>
     export default {
+        name: "tireButtonGroup",
         mounted() {
             for (let node of this.$el.children) {
                 let nodeName = node.nodeName.toLowerCase();
@@ -17,7 +18,7 @@
     }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     .t-button-group {
         display: inline-flex;
         vertical-align: bottom;

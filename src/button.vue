@@ -10,6 +10,7 @@
 <script>
     import Icon from "./icon"
     export default {
+        name: "tireButton",
         components:{
           "t-icon": Icon
         },
@@ -30,7 +31,7 @@
     }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     @keyframes spin {
         0%{transform: rotate(0)}
         100%{transform: rotate(360deg)}
