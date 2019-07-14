@@ -20,6 +20,11 @@ new Vue({
         loading6: false,
         loading7: false,
         loading8: false,
+    },
+    methods: {
+        inputChange(e) {
+            console.log(e);
+        }
     }
 });
 
