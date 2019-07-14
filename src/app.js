@@ -20,6 +20,7 @@ new Vue({
         loading6: false,
         loading7: false,
         loading8: false,
+        message: "hi"
     },
     methods: {
         inputChange(e) {
