@@ -32,7 +32,7 @@
 </style>
 <body>
 <div id="app">
-    <t-row>
+    <t-row gutter="20">
         <t-col>1</t-col>
         <t-col>2</t-col>
     </t-row>
@@ -48,8 +48,8 @@
         <t-col>4</t-col>
     </t-row>
     <t-row>
-        <t-col span="2">1</t-col>
-        <t-col span="22">11</t-col>
+        <t-col span="1">1</t-col>
+        <t-col span="22" offset="1">11</t-col>
     </t-row>
     <div style="margin: 10px">
         <t-button :loading="loading1" @click="loading1 = !loading1">按钮</t-button>
