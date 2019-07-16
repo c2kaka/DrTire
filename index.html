@@ -30,15 +30,34 @@
         font-size: var(--font-size);
     }
 </style>
+<style>
+    .demoDiv {
+        background: deepskyblue;
+        height: 50px;
+        border: 1px solid greenyellow;
+    }
+</style>
 <body>
 <div id="app">
     <t-row>
-        <t-col span="24" :phone="{span:24}" :ipad="{span:12}" :narrow-pc="{span:8}"></t-col>
-        <t-col span="24" :phone="{span:24}" :ipad="{span:12}" :narrow-pc="{span:8}"></t-col>
-        <t-col span="24" :phone="{span:24}" :ipad="{span:12}" :narrow-pc="{span:8}"></t-col>
-        <t-col span="24" :phone="{span:24}" :ipad="{span:12}" :narrow-pc="{span:8}"></t-col>
-        <t-col span="24" :phone="{span:24}" :ipad="{span:12}" :narrow-pc="{span:8}"></t-col>
-        <t-col span="24" :phone="{span:24}" :ipad="{span:12}" :narrow-pc="{span:8}"></t-col>
+        <t-col span="24" :phone="{span:24}" :ipad="{span:12}" :narrow-pc="{span:8}">
+            <div class="demoDiv"></div>
+        </t-col>
+        <t-col span="24" :phone="{span:24}" :ipad="{span:12}" :narrow-pc="{span:8}">
+            <div class="demoDiv"></div>
+        </t-col>
+        <t-col span="24" :phone="{span:24}" :ipad="{span:12}" :narrow-pc="{span:8}">
+            <div class="demoDiv"></div>
+        </t-col>
+        <t-col span="24" :phone="{span:24}" :ipad="{span:12}" :narrow-pc="{span:8}">
+            <div class="demoDiv"></div>
+        </t-col>
+        <t-col span="24" :phone="{span:24}" :ipad="{span:12}" :narrow-pc="{span:8}">
+            <div class="demoDiv"></div>
+        </t-col>
+        <t-col span="24" :phone="{span:24}" :ipad="{span:12}" :narrow-pc="{span:8}">
+            <div class="demoDiv"></div>
+        </t-col>
     </t-row>
     <t-row gutter="20">
         <t-col>1</t-col>

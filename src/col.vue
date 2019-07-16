@@ -1,9 +1,7 @@
 <template>
     <div class="col" :class="colClasses"
          :style="colStyle">
-        <div class="innerCol">
             <slot></slot>
-        </div>
     </div>
 </template>
 
@@ -39,16 +37,31 @@
                 gutter: 0
             }
         },
+        methods: {
+            createClasses(obj, infix = '') {
+                let classes = [];
+                if (!obj) {
+                    return [];
+                }
+                if (obj.span) {
+                    classes.push(`col-${infix}${obj.span}`);
+                }
+                if (obj.offset) {
+                    classes.push(`col-${infix}${obj.offset}`);
+                }
+                return classes;
+            }
+        },
         computed: {
             colClasses() {
                 const {span, offset, ipad, narrowPc, pc, widePc} = this;
+                const createClasses = this.createClasses;
                 return [
-                    `col-${span}`,
-                    offset && `offset-${offset}`,
-                    ipad && `col-ipad-${ipad.span}`,
-                    narrowPc && `col-narrow-pc-${narrowPc.span}`,
-                    pc && `col-pc-${pc.span}`,
-                    widePc && `col-wide-pc-${widePc.span}`
+                    ...createClasses({span, offset}),
+                    ...createClasses(ipad, 'ipad-'),
+                    ...createClasses(narrowPc, 'narrow-pc-'),
+                    ...createClasses(pc, 'pc-'),
+                    ...createClasses(widePc, 'wide-pc-'),
                 ];
             },
             colStyle() {
@@ -64,14 +77,6 @@
 
 <style scoped lang="scss">
     .col {
-        width: 50%;
-
-        > .innerCol {
-            height: 50px;
-            background: deepskyblue;
-            border: 1px solid greenyellow;
-        }
-
         $classPrefix: col-;
         @for $n from 1 through 24 {
             &.#{$classPrefix}#{$n} {
