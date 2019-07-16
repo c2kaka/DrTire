@@ -1,7 +1,7 @@
 <template>
-    <div class="col" :class="[`col-${span}`,offset && `offset-${offset}`]"
-         :style="{paddingLeft:gutter/2+'px',paddingRight:gutter/2+'px' }">
-        <div style="border: 1px solid greenyellow;height: 100px">
+    <div class="col" :class="colClasses"
+         :style="colStyle">
+        <div class="innerCol">
             <slot></slot>
         </div>
     </div>
@@ -22,16 +22,34 @@
             return {
                 gutter: 0
             }
+        },
+        computed: {
+            colClasses() {
+                const {span, offset} = this;
+                return [`col-${span}`, offset && `offset-${offset}`];
+            },
+            colStyle() {
+                const {gutter} = this;
+                return {
+                    paddingLeft: gutter / 2 + 'px',
+                    paddingRight: gutter / 2 + 'px'
+                }
+            }
         }
     }
 </script>
 
 <style scoped lang="scss">
     .col {
-        /*height: 100px;*/
-        /*background: deepskyblue;*/
+        //height: 100px;
+        //background: deepskyblue;
         width: 50%;
-        /*border: 1px solid greenyellow;*/
+        //border: 1px solid greenyellow;
+        > .innerCol {
+            height: 100px;
+            background: deepskyblue;
+            border: 1px solid greenyellow;
+        }
 
         $classPrefix: col-;
         @for $n from 1 through 24 {
