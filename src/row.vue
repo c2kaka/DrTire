@@ -52,7 +52,7 @@
         }
 
         &.align-right {
-            justify-content: right;
+            justify-content: flex-end;
         }
     }
 </style>
