@@ -41,12 +41,9 @@
 
 <style scoped lang="scss">
     .col {
-        //height: 100px;
-        //background: deepskyblue;
         width: 50%;
-        //border: 1px solid greenyellow;
         > .innerCol {
-            height: 100px;
+            height: 50px;
             background: deepskyblue;
             border: 1px solid greenyellow;
         }
