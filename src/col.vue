@@ -47,7 +47,7 @@
                     classes.push(`col-${infix}${obj.span}`);
                 }
                 if (obj.offset) {
-                    classes.push(`col-${infix}${obj.offset}`);
+                    classes.push(`offset-${infix}${obj.offset}`);
                 }
                 return classes;
             }
