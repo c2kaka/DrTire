@@ -52,7 +52,9 @@ new Vue({
                         console.log("用户说知道了");
                     }
                 },
-                enableHTML: true
+                enableHTML: true,
+                autoClose: false,
+                position: 'middle'
             });
         }
     },
