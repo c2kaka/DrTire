@@ -51,7 +51,8 @@ new Vue({
                     callback(toast) {
                         console.log("用户说知道了");
                     }
-                }
+                },
+                enableHTML: true
             });
         }
     },

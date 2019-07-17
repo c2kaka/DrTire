@@ -1,8 +1,11 @@
 <template>
-    <div class="toast">
-        <slot></slot>
+    <div class="toast" ref="toast">
+        <div class="message">
+            <slot v-if="!enableHTML"></slot>
+            <div v-else v-html="$slots.default[0]"></div>
+        </div>
         <template v-if="closeButton">
-            <div class="line"></div>
+            <div class="line" ref="line"></div>
             <span class="close" @click="buttonClose">
                 {{closeButton.text}}
             </span>
@@ -30,6 +33,10 @@
                         callback: undefined
                     }
                 }
+            },
+            enableHTML: {
+                type: Boolean,
+                default: false
             }
         },
         methods: {
@@ -42,25 +49,34 @@
                     this.close();
                     this.closeButton.callback(this);
                 }
+            },
+            excAutoClose() {
+                if (this.autoClose) {
+                    setTimeout(() => {
+                        this.close();
+                    }, this.autoCloseDelay * 1000)
+                }
+            },
+            updateStyle() {
+                this.$nextTick(() => {
+                    this.$refs.line.style.height = `${this.$refs.toast.getBoundingClientRect().height}px`;
+                })
             }
         },
         mounted() {
-            if (this.autoClose) {
-                setTimeout(() => {
-                    this.close();
-                }, this.autoCloseDelay * 1000)
-            }
+            this.updateStyle();
+            this.excAutoClose();
         }
     }
 </script>
 
 <style scoped lang="scss">
     $font-size: 14px;
-    $toast-height: 40px;
+    $toast-min-height: 40px;
     $toast-bg: rgba(0, 0, 0, 0.75);
     .toast {
         font-size: $font-size;
-        height: $toast-height;
+        min-height: $toast-min-height;
         background: $toast-bg;
         line-height: 1.8;
         position: fixed;
@@ -74,6 +90,10 @@
         display: flex;
         align-items: center;
 
+        > .message {
+            padding: 8px 0;
+        }
+
         > .line {
             height: 100%;
             margin-left: 16px;
@@ -83,6 +103,7 @@
         > .close {
             margin-left: 16px;
             cursor: pointer;
+            flex-shrink: 0;
         }
     }
 </style>
