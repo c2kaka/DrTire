@@ -44,7 +44,7 @@ new Vue({
         inputChange(e) {
             console.log(e);
         },
-        showToast(message) {
+        showToast(message, position) {
             this.$toast(message, {
                 closeButton: {
                     text: "知道了",
@@ -52,9 +52,9 @@ new Vue({
                         console.log("用户说知道了");
                     }
                 },
-                enableHTML: true,
+                enableHTML: false,
                 autoClose: false,
-                position: 'middle'
+                position: position
             });
         }
     },
