@@ -12,6 +12,11 @@ import Sider from "./sider"
 import Footer from "./footer"
 import Toast from "./toast"
 import Plugin from "./plugin"
+import Tabs from "./tabs"
+import TabsHead from "./tabs-head"
+import TabsItem from "./tabs-item"
+import TabsBody from "./tabs-body"
+import TabsPane from "./tabs-pane"
 
 Vue.component('t-button', Button);
 Vue.component('t-icon', Icon);
@@ -27,6 +32,12 @@ Vue.component("t-footer", Footer);
 Vue.component("t-toast", Toast);
 Vue.use(Plugin);
 
+Vue.component("t-tabs", Tabs);
+Vue.component("t-tabs-head", TabsHead);
+Vue.component("t-tabs-item", TabsItem);
+Vue.component("t-tabs-body", TabsBody);
+Vue.component("t-tabs-pane", TabsPane);
+
 new Vue({
     el: "#app",
     data: {
@@ -38,7 +49,8 @@ new Vue({
         loading6: false,
         loading7: false,
         loading8: false,
-        message: "hi"
+        message: "hi",
+        selectedTab: 'woman'
     },
     methods: {
         inputChange(e) {
@@ -49,7 +61,7 @@ new Vue({
                 closeButton: {
                     text: "知道了",
                     callback(toast) {
-                        console.log("用户说知道了");
+                        console.log("用户说知道了" + toast);
                     }
                 },
                 enableHTML: false,

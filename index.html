@@ -110,9 +110,30 @@
     <!--    <t-input value="王五" @change="inputChange"></t-input>-->
     <!--    <t-input value="王" error="名字不能少于两个字！"></t-input>-->
     <!--    <t-input v-model="message"></t-input>-->
-    <t-button @click="showToast('不能少于两个字名字不能少于两个字','top')">top</t-button>
-    <t-button @click="showToast('不能少于两个字名字不能少于两个字','middle')">middle</t-button>
-    <t-button @click="showToast('不能少于两个字名字不能少于两个字','bottom')">bottom</t-button>
+
+    <!--    <t-button @click="showToast('不能少于两个字名字不能少于两个字','top')">top</t-button>-->
+    <!--    <t-button @click="showToast('不能少于两个字名字不能少于两个字','middle')">middle</t-button>-->
+    <!--    <t-button @click="showToast('不能少于两个字名字不能少于两个字','bottom')">bottom</t-button>-->
+
+    <!--    tabs组件-->
+    <t-tabs :selected.sync="selectedTab">
+        <t-tabs-head>
+            <t-tabs-item name="woman">
+                <t-icon icon="settings"></t-icon>
+                美女
+            </t-tabs-item>
+            <t-tabs-item name="finance" disabled>财经</t-tabs-item>
+            <t-tabs-item name="sports">体育</t-tabs-item>
+            <template slot="actions">
+                <t-button>actions</t-button>
+            </template>
+        </t-tabs-head>
+        <t-tabs-body>
+            <t-tabs-pane name="woman">美女相关资讯</t-tabs-pane>
+            <t-tabs-pane name="finance">财经相关资讯</t-tabs-pane>
+            <t-tabs-pane name="sports">体育相关资讯</t-tabs-pane>
+        </t-tabs-body>
+    </t-tabs>
 </div>
 <script src="./src/app.js"></script>
 </body>
