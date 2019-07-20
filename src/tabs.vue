@@ -36,6 +36,9 @@
             //this.$emit('update:selected','xxx')
         },
         mounted() {
+            if (this.$children.length <= 0) {
+                console && console.warn && console.warn('tabs子组件必须是tabs-head和tabs-body组件!')
+            }
             this.$children.forEach(vm => {
                 if (vm.$options.name === 'tireTabsHead') {
                     vm.$children.forEach(childVm => {
