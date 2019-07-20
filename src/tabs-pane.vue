@@ -37,10 +37,10 @@
 <style scoped lang="scss">
     .tabs-pane {
         display: none;
-
+        padding: 1em;
         &.active {
             display: block;
-            background: red;
+
         }
     }
 </style>

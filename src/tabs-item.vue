@@ -25,7 +25,8 @@
         computed: {
             itemClass() {
                 return {
-                    active: this.active
+                    active: this.active,
+                    disabled: this.disabled
                 }
             }
         },
@@ -37,22 +38,32 @@
         },
         methods: {
             itemClick() {
-                this.eventBus.$emit("update:selected", this.name);
+                if (this.disabled) {
+                    return;
+                }
+                this.eventBus.$emit("update:selected", this.name, this);
             }
         }
     }
 </script>
 
 <style scoped lang="scss">
-    $item-height: 40px;
+    $item-color: #1a73e8;
+    $disabled-text-color: grey;
     .tabs-item {
-        height: $item-height;
+        height: 100%;
         flex-shrink: 0;
         padding: 0 1em;
         cursor: pointer;
-
+        display: flex;
+        align-items: center;
         &.active {
-            background: red;
+            color: $item-color;
+            font-weight: bold;
+        }
+
+        &.disabled {
+            color: $disabled-text-color;
         }
     }
 </style>
