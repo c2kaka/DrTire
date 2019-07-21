@@ -1,5 +1,5 @@
 <template>
-    <div class="popover" @click="popoverClick" ref="popover">
+    <div class="popover" ref="popover">
         <div class="content-wrapper" v-if="visible" ref="contentWrapper" :class="{[`position-${position}`]:true}">
             <slot name="content"></slot>
         </div>
@@ -24,6 +24,29 @@
                 validator(value) {
                     return ['top', 'bottom', 'left', 'right'].indexOf(value) >= 0;
                 }
+            },
+            trigger: {
+                type: String,
+                default: 'click',
+                validator(value) {
+                    return ['click', 'hover'].indexOf(value) >= 0;
+                }
+            }
+        },
+        mounted() {
+            if (this.trigger === 'click') {
+                this.$refs.popover.addEventListener('click', this.popoverClick);
+            } else {
+                this.$refs.popover.addEventListener('mouseenter', this.open);
+                this.$refs.popover.addEventListener('mouseleave', this.close);
+            }
+        },
+        destroyed() {
+            if (this.trigger === 'click') {
+                this.$refs.popover.removeEventListener('click', this.popoverClick);
+            } else {
+                this.$refs.popover.removeEventListener('mouseenter', this.open);
+                this.$refs.popover.removeEventListener('mouseleave', this.close);
             }
         },
         methods: {
@@ -32,22 +55,26 @@
                 document.body.appendChild(contentWrapper);
                 const {top, left, height, width} = triggerWrapper.getBoundingClientRect();
                 const {height: contentHeight} = contentWrapper.getBoundingClientRect();
-                if (this.position === "top") {
-                    contentWrapper.style.left = left + window.scrollX + 'px';
-                    contentWrapper.style.top = top + window.scrollY + 'px';
-                } else if (this.position === "bottom") {
-                    contentWrapper.style.left = left + window.scrollX + 'px';
-                    contentWrapper.style.top = top + height + window.scrollY + 'px';
-                } else if (this.position === "left") {
-                    contentWrapper.style.left = left + window.scrollX + 'px';
-                    contentWrapper.style.top = top + (height - contentHeight) / 2
-                        + window.scrollY + 'px';
-                } else {
-                    contentWrapper.style.left = left + width + window.scrollX + 'px';
-                    contentWrapper.style.top = top + (height - contentHeight) / 2
-                        + window.scrollY + 'px';
-                }
-
+                const positions = {
+                    top: {
+                        left: left + window.scrollX,
+                        top: top + window.scrollY
+                    },
+                    bottom: {
+                        left: left + window.scrollX,
+                        top: top + window.scrollY + height
+                    },
+                    left: {
+                        left: left + window.scrollX,
+                        top: top + (height - contentHeight) / 2 + window.scrollY
+                    },
+                    right: {
+                        left: left + window.scrollX + width,
+                        top: top + (height - contentHeight) / 2 + window.scrollY
+                    }
+                };
+                contentWrapper.style.left = positions[this.position].left + 'px';
+                contentWrapper.style.top = positions[this.position].top + 'px';
             },
             close() {
                 this.visible = false;
@@ -118,6 +145,7 @@
 
             &::before, &::after {
                 left: 10px;
+                border-bottom: none;
             }
 
             &::before {
@@ -136,6 +164,7 @@
 
             &::before, &::after {
                 left: 10px;
+                border-top: none;
             }
 
             &::before {
@@ -156,6 +185,7 @@
             &::before, &::after {
                 top: 50%;
                 transform: translateY(-50%);
+                border-right: none;
             }
 
             &::before {
@@ -175,6 +205,7 @@
             &::before, &::after {
                 top: 50%;
                 transform: translateY(-50%);
+                border-left: none;
             }
 
             &::before {
