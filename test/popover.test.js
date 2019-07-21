@@ -28,10 +28,37 @@ describe('Popover', () => {
         vm.$nextTick(() => {
             vm.$el.querySelector('button').click();
             vm.$nextTick(() => {
-                const contentWrapper = vm.$refs.test.$refs;
+                const {contentWrapper} = vm.$refs.test.$refs;
                 expect(contentWrapper.classList.contains('position-top')).to.be.true;
                 done();
             })
         })
     });
+
+    // xit('可以设置trigger', (done) => {
+    //     Vue.component('t-popover', Popover);
+    //     const div = document.createElement('div');
+    //     document.body.appendChild(div);
+    //     div.innerHTML = `
+    //         <t-popover position="top" trigger="hover" ref="test">
+    //             <template slot="content">
+    //                 <div>
+    //                     content
+    //                 </div>
+    //             </template>
+    //             <button>top</button>
+    //         </t-popover>
+    //     `;
+    //
+    //     const vm = new Vue({el: div});
+    //     vm.$nextTick(() => {
+    //         let event = new Event('mouseenter');
+    //         vm.$el.dispatchEvent(event);
+    //         vm.$nextTick(() => {
+    //             const {contentWrapper} = vm.$refs.test.$refs;
+    //             expect(contentWrapper).to.exist;
+    //             done();
+    //         })
+    //     })
+    // });
 });
