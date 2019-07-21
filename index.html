@@ -137,10 +137,11 @@
 
     <!-- popover slot=""组件 -->
     <t-popover position="top">
-        <template slot="content">
+        <template slot="content" slot-scope="{close}">
             <div>
                 popover content popover content popover content popover content popover content popover content popover
                 content popover content
+                <t-button @click="close">close</t-button>
             </div>
         </template>
         <t-button>top</t-button>
