@@ -136,14 +136,44 @@
     <!--    </t-tabs>-->
 
     <!-- popover slot=""组件 -->
-    <t-popover>
+    <t-popover position="top">
         <template slot="content">
             <div>
                 popover content popover content popover content popover content popover content popover content popover
                 content popover content
             </div>
         </template>
-        <t-button>点我</t-button>
+        <t-button>top</t-button>
+    </t-popover>
+
+    <t-popover position="bottom">
+        <template slot="content">
+            <div>
+                popover content popover content popover content popover content popover content popover content popover
+                content popover content
+            </div>
+        </template>
+        <t-button>bottom</t-button>
+    </t-popover>
+
+    <t-popover position="left">
+        <template slot="content">
+            <div>
+                popover content popover content popover content popover content popover content popover content popover
+                content popover content
+            </div>
+        </template>
+        <t-button>left</t-button>
+    </t-popover>
+
+    <t-popover position="right">
+        <template slot="content">
+            <div>
+                popover content popover content popover content popover content popover content popover content popover
+                content popover content
+            </div>
+        </template>
+        <t-button>right</t-button>
     </t-popover>
 </div>
 <script src="./src/app.js"></script>
