@@ -39,7 +39,7 @@ Vue.component("t-tabs-item", TabsItem);
 Vue.component("t-tabs-body", TabsBody);
 Vue.component("t-tabs-pane", TabsPane);
 
-Vue.component("t-popover",Popover);
+Vue.component("t-popover", Popover);
 
 new Vue({
     el: "#app",

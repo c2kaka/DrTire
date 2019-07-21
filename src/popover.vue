@@ -1,48 +1,49 @@
 <template>
-  <div class="popover" @click.stop="popoverClick">
-    <div class="content-wrapper" v-if="visible" @click.stop>
-      <slot name="content"></slot>
+    <div class="popover" @click.stop="popoverClick">
+        <div class="content-wrapper" v-if="visible" @click.stop>
+            <slot name="content"></slot>
+        </div>
+        <slot></slot>
     </div>
-    <slot></slot>
-  </div>
 </template>
 
 <script>
-export default {
-  name: "tirePopover",
-  data() {
-    return {
-      visible: false
+    export default {
+        name: "tirePopover",
+        data() {
+            return {
+                visible: false
+            };
+        },
+        methods: {
+            popoverClick() {
+                this.visible = !this.visible;
+                if (this.visible === true) {
+                    this.$nextTick(() => {
+                        let eventHandler = () => {
+                            this.visible = false;
+                            document.removeEventListener("click", eventHandler);
+                        };
+                        document.addEventListener('click', eventHandler);
+                    });
+                }
+            }
+        }
     };
-  },
-  methods: {
-    popoverClick() {
-      this.visible = !this.visible;
-      if (this.visible === true) {
-        this.$nextTick(() => {
-          let eventHandler = () => {
-            this.visible = false;
-            document.removeEventListener("click", eventHandler);
-          };
-          document.addEventListener('click',eventHandler);
-        });
-      }
-    }
-  }
-};
 </script>
 
 <style scoped lang="scss">
-.popover {
-  display: inline-block;
-  vertical-align: top;
-  position: relative;
-  > .content-wrapper {
-    position: absolute;
-    bottom: 100%;
-    left: 0;
-    border: 1px solid deepskyblue;
-    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
-  }
-}
+    .popover {
+        display: inline-block;
+        vertical-align: top;
+        position: relative;
+
+        > .content-wrapper {
+            position: absolute;
+            bottom: 100%;
+            left: 0;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
+        }
+    }
 </style>
