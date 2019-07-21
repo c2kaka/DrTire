@@ -58,7 +58,7 @@
 <!--    }-->
 <!--</style>-->
 <body>
-<div id="app">
+<div id="app" style="padding: 200px">
     <!--    <t-layout style="height: 50vh;margin: 10px">-->
     <!--        <t-sider class="demo">sider</t-sider>-->
     <!--        <t-layout>-->
@@ -116,7 +116,7 @@
     <!--    <t-button @click="showToast('不能少于两个字名字不能少于两个字','bottom')">bottom</t-button>-->
 
     <!--    tabs组件-->
-    <t-tabs :selected.sync="selectedTab">
+    <!-- <t-tabs :selected.sync="selectedTab">
         <t-tabs-head>
             <t-tabs-item name="woman">
                 <t-icon icon="settings"></t-icon>
@@ -133,7 +133,17 @@
             <t-tabs-pane name="finance">财经相关资讯</t-tabs-pane>
             <t-tabs-pane name="sports">体育相关资讯</t-tabs-pane>
         </t-tabs-body>
-    </t-tabs>
+    </t-tabs> -->
+
+    <!-- popover slot=""组件 -->
+    <t-popover>
+        <template slot="content">
+            <div>
+                popover content
+            </div>
+        </template>
+        <t-button>点我</t-button>
+    </t-popover>
 </div>
 <script src="./src/app.js"></script>
 </body>
