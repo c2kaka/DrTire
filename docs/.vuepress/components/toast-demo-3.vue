@@ -66,7 +66,7 @@
         methods: {
             onClickButton() {
                 this.$toast('<strong style="color:red;">加粗的提示</strong>', {
-                    enableHtml: true
+                    enableHTML: true
                 })
             }
         },
