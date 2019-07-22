@@ -21,19 +21,19 @@
         props: {
             autoClose: {
                 type: [Boolean, Number],
-                default: false,
+                default: 2,
                 validator(value) {
                     return value === false || typeof value === 'number';
                 }
             },
             closeButton: {
                 type: Object,
-                default() {
-                    return {
-                        text: '关闭',
-                        callback: undefined
-                    }
-                }
+                // default() {
+                //     return {
+                //         text: '关闭',
+                //         callback: undefined
+                //     }
+                // }
             },
             enableHTML: {
                 type: Boolean,

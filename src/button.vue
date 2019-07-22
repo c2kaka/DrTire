@@ -1,7 +1,7 @@
 <template>
     <button class="t-button" :class="{[`icon-${position}`]:true}" @click="$emit('click')">
-        <t-icon class="icon" v-if="icon && !loading" :icon="icon"></t-icon>
-        <t-icon class="loading icon" v-if="loading" icon="loading"></t-icon>
+        <t-icon class="icon" v-if="icon && !loading" :name="icon"></t-icon>
+        <t-icon class="loading icon" v-if="loading" name="loading"></t-icon>
         <div class="content">
             <slot></slot>
         </div>
@@ -32,6 +32,15 @@
 </script>
 
 <style lang="scss" scoped>
+    $button-height: 32px;
+    $font-size: 14px;
+    $button-bg: white;
+    $button-active-bg: #eee;
+    $border-radius: 4px;
+    $color: #333;
+    $border-color: #999;
+    $border-color-hover: #666;
+
     @keyframes spin {
         0%{transform: rotate(0)}
         100%{transform: rotate(360deg)}
@@ -42,18 +51,18 @@
         justify-content: center;
         align-items: center;
         vertical-align: bottom;
-        font-size: var(--font-size);
-        height: var(--button-height);
-        background: var(--button-bg);
+        font-size: $font-size;
+        height: $button-height;
+        background: $button-bg;
         padding: 0 1em;
-        border-radius: var(--border-radius);
-        border: 1px solid var(--border-color);
+        border-radius: $border-radius;
+        border: 1px solid $border-color;
         &:hover{
-            border-color: var(--border-color-hover);
+            border-color: $border-color-hover;
         }
 
         &:active{
-            background: var(--button-active-bg);
+            background: $button-active-bg;
         }
 
         &:focus{
