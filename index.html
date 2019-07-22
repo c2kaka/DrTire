@@ -224,17 +224,31 @@
     <!--    </div>-->
 
     <!--    折叠面板collapse组件-->
-    <t-collapse single>
-        <t-collapse-item title="title1">
+    <t-collapse single :selected.sync="selectedItem">
+        <t-collapse-item title="title1" name="1">
             This is panel header 1
         </t-collapse-item>
-        <t-collapse-item title="title2">
+        <t-collapse-item title="title2" name="2">
             This is panel header 2
         </t-collapse-item>
-        <t-collapse-item title="title3">
+        <t-collapse-item title="title3" name="3">
             This is panel header 3
         </t-collapse-item>
     </t-collapse>
+
+    <div style="margin-top: 20px">
+        <t-collapse :selected.sync="selectedItem">
+            <t-collapse-item title="title1" name="1">
+                This is panel header 1
+            </t-collapse-item>
+            <t-collapse-item title="title2" name="2">
+                This is panel header 2
+            </t-collapse-item>
+            <t-collapse-item title="title3" name="3">
+                This is panel header 3
+            </t-collapse-item>
+        </t-collapse>
+    </div>
 </div>
 <script src="./src/app.js"></script>
 </body>

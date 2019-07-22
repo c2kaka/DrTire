@@ -57,7 +57,8 @@ new Vue({
         loading7: false,
         loading8: false,
         message: "hi",
-        selectedTab: 'woman'
+        selectedTab: 'woman',
+        selectedItem: ['1', '2']
     },
     methods: {
         inputChange(e) {
